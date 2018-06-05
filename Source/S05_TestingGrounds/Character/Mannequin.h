@@ -11,6 +11,10 @@ class S05_TESTINGGROUNDS_API AMannequin : public ACharacter
 {
 	GENERATED_BODY()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 public:
 	// Sets default values for this character's properties
 	AMannequin();
@@ -19,7 +23,11 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+<<<<<<< HEAD
 public:
+=======
+public:	
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -32,6 +40,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
 	void PullTrigger();
 
+<<<<<<< HEAD
 private:
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
@@ -45,3 +54,18 @@ private:
 	AGun* Gun;
 
 };
+=======
+	/** Pawn Mesh : 1st person view (arms; seen only by self) **/
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+	class USkeletalMeshComponent* Mesh1P;
+
+	/** FirstPersonCamera **/
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	class UCameraComponent* FirstPersonCameraComponent;
+
+private:
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = camera, met = (AllowPrivateAccess = "true"))
+	AGun * Gun;
+};
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f

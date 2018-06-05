@@ -6,13 +6,22 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
 #include "Animation/AnimInstance.h"
+<<<<<<< HEAD
+=======
+#include "HeadMountedDisplayFunctionLibrary.h"
+#include "MotionControllerComponent.h"
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 #include "../Weapons/Gun.h"
 
 
 // Sets default values
 AMannequin::AMannequin()
 {
+<<<<<<< HEAD
 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+=======
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Create a CameraComponent	
@@ -35,6 +44,10 @@ AMannequin::AMannequin()
 void AMannequin::BeginPlay()
 {
 	Super::BeginPlay();
+<<<<<<< HEAD
+=======
+
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 	if (GunBlueprint == NULL) {
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing."));
 		return;
@@ -44,7 +57,13 @@ void AMannequin::BeginPlay()
 	Gun->AnimInstance = Mesh1P->GetAnimInstance();
 
 	if (InputComponent != NULL) {
+<<<<<<< HEAD
 		InputComponent->BindAction("Fire", IE_Pressed, this, &AMannequin::PullTrigger);
+=======
+		
+	InputComponent->BindAction("Fire", IE_Pressed, this, &AMannequin::PullTrigger);
+	
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 	}
 
 }
@@ -61,10 +80,19 @@ void AMannequin::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
 }
 
 void AMannequin::PullTrigger()
 {
 	Gun->OnFire();
+<<<<<<< HEAD
 }
+=======
+
+}
+
+>>>>>>> f5c8cb507ef0954db054450e11832762397b724f
