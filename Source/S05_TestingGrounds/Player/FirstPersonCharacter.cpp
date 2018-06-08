@@ -32,7 +32,7 @@ AFirstPersonCharacter::AFirstPersonCharacter()
 
 	// Create a mesh component that will be used when being viewed from a '1st person' view (when controlling this pawn)
 	Mesh1P = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh1P"));
-	//Mesh1P->SetOnlyOwnerSee(true);
+	Mesh1P->SetOnlyOwnerSee(true);
 	Mesh1P->SetupAttachment(FirstPersonCameraComponent);
 	Mesh1P->bCastDynamicShadow = false;
 	Mesh1P->CastShadow = false;
@@ -57,13 +57,11 @@ void AFirstPersonCharacter::BeginPlay()
 	}
 	Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
 	Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint")); //Attach gun mesh component to Skeleton, doing it here because the skelton is not yet created in the constructor
-	Gun->AnimInstance = Mesh1P->GetAnimInstance();
-
+	Gun->AnimInstance1P = Mesh1P->GetAnimInstance();
 	if (EnableTouchscreenMovement(InputComponent) == false)
 	{
 		InputComponent->BindAction("Fire", IE_Pressed, Gun, &AGun::OnFire);
 	}
-
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -78,7 +76,7 @@ void AFirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* Inp
 	InputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
 
 	//InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AFirstPersonCharacter::TouchStarted);
-		InputComponent->BindAxis("MoveForward", this, &AFirstPersonCharacter::MoveForward);
+	InputComponent->BindAxis("MoveForward", this, &AFirstPersonCharacter::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AFirstPersonCharacter::MoveRight);
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently

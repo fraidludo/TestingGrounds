@@ -11,13 +11,13 @@ class S05_TESTINGGROUNDS_API AGun : public AActor
 {
 	GENERATED_BODY()
 
-	/** Gun mesh: 1st person view (seen only by self) */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	class USkeletalMeshComponent* FP_Gun;
+		/** Gun mesh: 1st person view (seen only by self) */
+		UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		class USkeletalMeshComponent* FP_Gun;
 
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	class USceneComponent* FP_MuzzleLocation;
+		class USceneComponent* FP_MuzzleLocation;
 
 public:
 	// Sets default values for this actor's properties
@@ -31,21 +31,23 @@ public:
 
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category = Projectile)
-	TSubclassOf<class ABallProjectile> ProjectileClass;
+		TSubclassOf<class ABallProjectile> ProjectileClass;
 
 	/** Sound to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class USoundBase* FireSound;
+		class USoundBase* FireSound;
 
-	/** AnimMontage to play each time we fire */
+	/** AnimMontages to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class UAnimMontage* FireAnimation;
+		class UAnimMontage* FireAnimation1P;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+		class UAnimMontage* FireAnimation3P;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-	class UAnimInstance* AnimInstance;
+	class UAnimInstance* AnimInstance1P;
+	class UAnimInstance* AnimInstance3P;
 
 	/** Fires a projectile. */
 	UFUNCTION(BlueprintCallable, Category = "Input")
-	void OnFire();
+		void OnFire();
 
 };
