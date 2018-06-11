@@ -6,13 +6,15 @@
 #include "Components/InputComponent.h"
 #include "GameFramework/InputSettings.h"
 #include "Animation/AnimInstance.h"
+#include "HeadMountedDisplayFunctionLibrary.h"
+#include "MotionControllerComponent.h"
 #include "../Weapons/Gun.h"
 
 
 // Sets default values
 AMannequin::AMannequin()
 {
-	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Create a CameraComponent	
@@ -35,7 +37,9 @@ AMannequin::AMannequin()
 void AMannequin::BeginPlay()
 {
 	Super::BeginPlay();
+
 	if (GunBlueprint == nullptr) {
+
 		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing."));
 		return;
 	}
@@ -71,13 +75,13 @@ void AMannequin::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void AMannequin::UnPossessed() {
+void AMannequin::UnPossessed()
+{
 	Super::UnPossessed();
 	if (Gun != nullptr)
-	Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint_0"));
+		Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint_0"));
 }
 
-void AMannequin::PullTrigger()
-{
-	Gun->OnFire();
-}
+	void AMannequin::PullTrigger(){
+		Gun->OnFire();
+	}

@@ -19,7 +19,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
+public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -29,10 +29,10 @@ public:
 	virtual void UnPossessed() override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-		TSubclassOf<class AGun> GunBlueprint;
+	TSubclassOf<class AGun> GunBlueprint;
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-		void PullTrigger();
+	void PullTrigger();
 
 private:
 	/** Pawn mesh: 1st person view (arms; seen only by self) */
