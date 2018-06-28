@@ -17,7 +17,7 @@ public:
 	UActorPool();
 
 	AActor* CheckOut();
-	void Return(AActor*ActorToReturn);
+	void Return(AActor *ActorToReturn);
 
 	void Add(AActor*ActorToAdd);
 };

@@ -22,5 +22,5 @@ auto VolumeIterator = TActorIterator<ANavMeshBoundsVolume>(GetWorld());
 
 void AInfiniteTerrainGameMode::AddToPool(ANavMeshBoundsVolume * VolumeToAdd)
 {
-	UE_LOG(LogTemp, Warning, TEXT("the actor found is %s"), *VolumeToAdd->GetName());
+	NavMeshBoundsVolumePool->Add(VolumeToAdd);
 }
